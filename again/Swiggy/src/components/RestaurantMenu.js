@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestauratMenu";
+import RestaurantCategory from "./RestaurantCatagories";
 
 
 const RestaurantMenu = () => {
@@ -9,9 +10,12 @@ const RestaurantMenu = () => {
   // const [resInfo, setResInfo] = useState(null);
 
   const {resId} = useParams();
-
+  
+  const dummy = "Dummy data";
   
   const resInfo = useRestaurantMenu(resId)
+
+  const [showIndex, setShowIndex] = useState(null)
 
   // useEffect(() => {
   //   fetchMenu();
@@ -35,20 +39,34 @@ const RestaurantMenu = () => {
 
   const {itemCards} = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
-  console.log(itemCards);
+  const items = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+
+  // console.log(items);
+
+  const catagories = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    (c)=> 
+    c.card?.card?.["@type"] === 
+    "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+  );
+  // console.log("Hello",catagories);
+
+  // console.log(itemCards);
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>{cuisines} - Rs. {costForTwoMessage}</p>
-      <br/>
-      <h2>Menu</h2>
-      <ul>
-      {itemCards.map(el => <li key={el.card.info.id}>{el.card.info.name} - Rs. {el.card.info.defaultPrice/100}</li>)}
-        {/* <li>{itemCards[0].card.info.name}</li>
-        <li>{itemCards[2].card.info.name}</li>
-        <li>{itemCards[1].card.info.name}</li> */}
-      </ul>
+    <div className="text-center">
+      <h1 className="font-bold my-4 text-2xl">{name}</h1>
+      <p className="text-lg">{cuisines.join(", ")} - Rs. {costForTwoMessage}</p>
+
+      {catagories.map((el, index) => (
+        <RestaurantCategory 
+          key={el?.card.card?.title} 
+          data={el?.card?.card} 
+          showItems={index === showIndex ? true : false}
+          setShowIndex={() => setShowIndex(index)}
+          dummy={dummy}
+        />
+      ))}
+      
     </div>
   );
 }; 

@@ -13,7 +13,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   //whenever state variable update react triggers a reconcilation cycle (re-render the component)
-  console.log("Body Rendered");
+  // console.log("Body Rendered");
 
   useEffect(() => { 
     fetchData();
@@ -24,7 +24,7 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.2438775&lng=77.4346625&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log(json);
+    // console.log(json);
     // ..optional chaining
     setListOfRestaurants(
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
