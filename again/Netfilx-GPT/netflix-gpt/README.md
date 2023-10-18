@@ -3,8 +3,20 @@
 - Create ract app
 - configured Tailwind css
 - Header
+- Routing of app
 - Login Form
-- SIgn up Form
+- Sign up Form
+- Form validation
+- useRef Hook
+- Firebase setup
+- Diploying our app to production
+- Create Signup user Account
+- Impliment sign in user api
+- Created our redux store with userSlice
+- Implemented sign out 
+- update profile 
+
+
 
 # Features
  - Login/Signup
