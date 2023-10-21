@@ -58,7 +58,7 @@ const Header = () => {
           <button className="text-white pr-4" >Home</button>
           <button className="text-white pr-4" >Popular</button>
           <button className="text-white pr-4" >Kid's</button>
-          <button className="text-white pr-4" onClick={handleGptSearchClick}>Gpt Recommendation</button>
+          <button className="text-white pr-4" onClick={handleGptSearchClick}>GPT Recommendation</button>
           
           <button
             onClick={handleSignOut}
