@@ -13,7 +13,7 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
 
   //whenever state variable update react triggers a reconcilation cycle (re-render the component)
-  // console.log("Body Rendered");
+  // console.log("Body Rendered"); 
 
   useEffect(() => { 
     fetchData();
@@ -27,10 +27,10 @@ const Body = () => {
     // console.log(json);
     // ..optional chaining
     setListOfRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -38,7 +38,7 @@ const Body = () => {
 
   if(onlineStatus === false) return <h1>Looks like you're offline!! Please check your internet connection</h1>
 
-  //conditional rendering
+  // conditional rendering
     if(listOfRestaurants.length === 0){
       return <Shimmer />
     }

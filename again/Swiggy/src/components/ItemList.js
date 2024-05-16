@@ -11,8 +11,6 @@ const ItemList = ({ items, dummy }) => {
   const handleAddItem = (item) => {
     //dispatch an action
     dispatch(addItem(item));
-
-
   }
 
   return (
@@ -33,15 +31,13 @@ const ItemList = ({ items, dummy }) => {
                 : el.card.info.defaultPrice / 100}
             </span>
             <br/>
-            <span className="text-xs">{el.card.info.description}</span>
+            <span className="text-xs opacity-60">{el.card.info.description}</span>
             <br/>
             <button className="bg-green-400 rounded-lg w-16 mt-3 text-gray-50"
               onClick={() => handleAddItem(el)}
               >Add</button>
           </div>
           <img src={CDN_URL + el.card.info.imageId} className="w-3/12 h-[150px] rounded-lg"/>
-            
-
         </div>
       ))}
     </div>
